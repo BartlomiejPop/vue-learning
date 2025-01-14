@@ -1,10 +1,20 @@
-<script setup lang="ts"></script>
-
+<script setup lang="ts">
+const emit = defineEmits(["selectForm"]);
+</script>
 <template>
 	<nav class="navigation">
-		<button class="navigation-item">Form1</button>
-		<button class="navigation-item">Form2</button>
-		<button class="navigation-item">Form3</button>
+		<button @click="$emit('selectForm', 1)" class="navigation-item">
+			Form1
+		</button>
+		<button @click="$emit('selectForm', 2)" class="navigation-item">
+			Form2
+		</button>
+		<button @click="$emit('selectForm', 3)" class="navigation-item">
+			Form3
+		</button>
+		<button @click="$emit('selectForm', 4)" class="navigation-item">
+			Result
+		</button>
 	</nav>
 </template>
 
@@ -16,6 +26,6 @@
 }
 
 .navigation-item {
-	width: 30%;
+	width: 24%;
 }
 </style>

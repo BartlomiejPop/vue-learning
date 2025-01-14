@@ -1,24 +1,40 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { inject } from "vue";
+import type { FormStateRef } from "../types";
 
-const name = ref("");
-const lastName = ref("");
-const age = ref("");
+const formState = inject<FormStateRef>("formState");
+
+if (!formState) {
+	throw new Error("formState is not provided");
+}
 </script>
 
 <template>
 	<section class="section">
 		<div class="form-item">
 			<label>Name </label>
-			<input v-model="name" type="text" placeholder="name" />
+			<input
+				v-model="formState.name.value"
+				id="name"
+				type="text"
+				placeholder="name" />
 		</div>
 		<div class="form-item">
 			<label>Last Name </label>
-			<input v-model="lastName" type="text" placeholder="last name" />
+			<input
+				v-model="formState.lastName.value"
+				id="last-name"
+				type="text"
+				placeholder="last name" />
 		</div>
 		<div class="form-item">
 			<label for="age">Age </label>
-			<input v-model="age" type="text" name="age" placeholder="age" />
+			<input
+				v-model="formState.age.value"
+				id="age"
+				type="number"
+				name="age"
+				placeholder="age" />
 		</div>
 	</section>
 </template>
